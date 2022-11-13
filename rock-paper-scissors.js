@@ -4,18 +4,6 @@ function getComputerChoice() {
     return computerChoices[Math.floor(Math.random() * computerChoices.length)];  
 }
 
-// prompt for player choice
-function getPlayerChoice() {
-
-    let playerChoice = prompt("Choose rock, paper or scissors");
-    while (playerChoice !== "rock" && playerChoice !== "paper" && playerChoice !== "scissors"){
-        playerChoice = prompt("Invalid choice, type rock, paper or scissors");
-    }
-
-    return playerChoice;
-
-}
-
 // check computer choice vs player choice
 function playRound(playerSelection, computerSelection) {
     round++;
@@ -61,15 +49,43 @@ let playerScore = 0;
 let computerScore = 0;
 let round = 1;
 
-// function to run 5 round loop for playRound
-function game(){
+// set rock button as variable
+const rock = document.querySelector('#rock');
+// add function to button
+rock.addEventListener('click', () => {
 
-    for (let i = 0; i < 5; i++){
-        let playerSelection = getPlayerChoice();
-        let computerSelection = getComputerChoice();
-        console.log(`Round ${round} - ${playRound(playerSelection, computerSelection)}`);
-        console.log(`Player score:${playerScore} | Computer score:${computerScore}`);
-    }
-}
+    let playerSelection = "rock";
+    let computerSelection = getComputerChoice();
+    roundText.textContent = `Round ${round} - ${playRound(playerSelection, computerSelection)}`;
+    scoreText.textContent = `Player score: ${playerScore} | Computer score: ${computerScore}`;
 
-game();
+});
+
+// set paper button as variable
+const paper = document.querySelector('#paper');
+// add function to button
+paper.addEventListener('click', () => {
+  
+    let playerSelection = "paper";
+    let computerSelection = getComputerChoice();
+    roundText.textContent = `Round ${round} - ${playRound(playerSelection, computerSelection)}`;
+    scoreText.textContent = `Player score: ${playerScore} | Computer score: ${computerScore}`;
+});
+
+// set scissors button as variable
+const scissors = document.querySelector('#scissors');
+// add function to button
+scissors.addEventListener('click', () => {
+  
+    let playerSelection = "scissors";
+    let computerSelection = getComputerChoice();
+    roundText.textContent = `Round ${round} - ${playRound(playerSelection, computerSelection)}`;
+    scoreText.textContent = `Player score: ${playerScore} | Computer score: ${computerScore}`;
+
+});
+
+// set round and score divs
+const roundText = document.querySelector('.round');
+roundText.textContent = "Select Rock, Paper or Scissors to begin";
+const scoreText = document.querySelector('.score');
+scoreText.textContent = "";
